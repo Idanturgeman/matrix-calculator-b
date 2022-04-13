@@ -1,9 +1,7 @@
 #include "Matrix.hpp"
 namespace zich{
     void Matrix::setMatrix(vector<double> data, int row, int col){
-        this->setRow(row);
-        this->setCol(col);
-        this->setData(data);}
+        this->setRow(row);this->setCol(col);this->setData(data);}
     bool operator ==(Matrix const &mat1,Matrix const &mat2){
         if (mat1.getRow() != mat2.getRow() || mat1.getCol() != mat2.getCol()){throw invalid_argument("row and cols must be equals");}        
         for (int i = 0; i < mat1.getRow(); i++){for (int j = 0; j < mat1.getCol(); j++){if (mat1.getData()[(unsigned int)(i * mat1.getCol() + j)] != mat2.getData()[(unsigned int)(i * mat2.getCol() + j)]){return false;}}}return true;}
@@ -86,15 +84,10 @@ namespace zich{
         return *this;}
     bool Matrix::operator>=(Matrix &mat){
         check(mat);double sum1 = 0;
-        for (int i = 0; i < getRow(); i++){
-            for (int j = 0; j < getCol(); j++){
-                sum1 += getData()[(unsigned int)(i * _col + j)];}}
+        for (int i = 0; i < getRow(); i++){for (int j = 0; j < getCol(); j++){sum1 += getData()[(unsigned int)(i * _col + j)];}}
         double sum2 = 0;
-        for (int i = 0; i < mat.getRow(); i++){
-            for (int j = 0; j < mat.getCol(); j++){
-                sum2 += mat.getData()[(unsigned int)(i * _col + j)];}}
-        return sum1 >= sum2;
-    }
+        for (int i = 0; i < mat.getRow(); i++){for (int j = 0; j < mat.getCol(); j++){sum2 += mat.getData()[(unsigned int)(i * _col + j)];}}
+        return sum1 >= sum2;}
     Matrix Matrix::operator--(const int num){
         Matrix copy = *this;
         for (int i = 0; i < getRow(); i++){for (int j = 0; j < getCol(); j++){this->_data[(unsigned int)(i * _col + j)] -= 1;}}
@@ -120,48 +113,28 @@ namespace zich{
         for (int i = 0; i < getRow(); i++){for (int j = 0; j < getCol(); j++){if (getData()[(unsigned int)(i * _col + j)] != mat.getData()[(unsigned int)(i * _col + j)]){return true;}}}
         return false;}
     bool Matrix::operator>(Matrix &mat){
-        check(mat);
-        double sum1 = 0;
-        for (int i = 0; i < getRow(); i++){
-            for (int j = 0; j < getCol(); j++){
-                sum1 += getData()[(unsigned int)(i * _col + j)];}}
+        check(mat);double sum1 = 0;
+        for (int i = 0; i < getRow(); i++){for (int j = 0; j < getCol(); j++){sum1 += getData()[(unsigned int)(i * _col + j)];}}
         double sum2 = 0;
-        for (int i = 0; i < mat.getRow(); i++){
-            for (int j = 0; j < mat.getCol(); j++){
-                sum2 += mat.getData()[(unsigned int)(i * _col + j)];}}
-        return sum1 > sum2;
-    }
+        for (int i = 0; i < mat.getRow(); i++){for (int j = 0; j < mat.getCol(); j++){sum2 += mat.getData()[(unsigned int)(i * _col + j)];}}
+        return sum1 > sum2;}
     inline void Matrix::check2(vector<double> data, int row, int col)const{
         if (row <= 0 || col <= 0){throw runtime_error("row or col can't be negative");}
         if (data.size() != row * col){throw runtime_error("the array must be equal to the size of the matrix");}
     }
     bool Matrix::operator<(Matrix &mat){
-        check(mat);
-        double sum1 = 0;
-        for (int i = 0; i < getRow(); i++){
-            for (int j = 0; j < getCol(); j++){
-                sum1 += getData()[(unsigned int)(i * _col + j)];}}
+        check(mat);double sum1 = 0;
+        for (int i = 0; i < getRow(); i++){for (int j = 0; j < getCol(); j++){sum1 += getData()[(unsigned int)(i * _col + j)];}}
         double sum2 = 0;
-        for (int i = 0; i < mat.getRow(); i++){
-            for (int j = 0; j < mat.getCol(); j++){
-                sum2 += mat.getData()[(unsigned int)(i * _col + j)];}}
-        return sum1 < sum2;
-    }
+        for (int i = 0; i < mat.getRow(); i++){for (int j = 0; j < mat.getCol(); j++){sum2 += mat.getData()[(unsigned int)(i * _col + j)];}}
+        return sum1 < sum2;}
     inline void Matrix::check3(const Matrix &mat){
-        if (this->_col != mat._row){
-            throw runtime_error("Cols not equal");}
-    }
+        if (this->_col != mat._row){throw runtime_error("Cols not equal");}}
     bool Matrix::operator<=(Matrix &mat){
-        check(mat);
-        double sum1 = 0;
-        for (int i = 0; i < getRow(); i++){
-            for (int j = 0; j < getCol(); j++){
-                sum1 += getData()[(unsigned int)(i * _col + j)];}}
+        check(mat);double sum1 = 0;
+        for (int i = 0; i < getRow(); i++){for (int j = 0; j < getCol(); j++){sum1 += getData()[(unsigned int)(i * _col + j)];}}
         double sum2 = 0;
-        for (int i = 0; i < mat.getRow(); i++){
-            for (int j = 0; j < mat.getCol(); j++){
-                sum2 += mat.getData()[(unsigned int)(i * _col + j)];}}
-        return sum1 <= sum2;
-    }
+        for (int i = 0; i < mat.getRow(); i++){for (int j = 0; j < mat.getCol(); j++){sum2 += mat.getData()[(unsigned int)(i * _col + j)];}}
+        return sum1 <= sum2;}
     Matrix::~Matrix(){}   
 }
