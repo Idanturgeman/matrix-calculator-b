@@ -77,7 +77,22 @@ namespace zich{
         for (int i = 0; i < getRow(); i++){for (int j = 0; j < getCol(); j++){this->_data[(unsigned int)(i * _col + j)] += mat.getData()[(unsigned int)(i * _col + j)];}}
         return *this;}
     ostream &operator<<(ostream &out, Matrix &mat){
-        for (int i = 0; i < mat.getRow(); i++){out << '[';for (int j = 0; j < mat.getCol(); j++){if (j != mat.getCol() - 1){out << mat.getData()[(unsigned int)(i * mat.getCol() + j)] << ' ';}else{out << mat.getData()[(unsigned int)(i * mat.getCol() + j)];}}if (i != mat.getRow() - 1){out << ']' << '\n';}else{out << ']';}}
+        int k = 0;
+        for (int i = 0; i < mat.getRow(); i++){
+            int p = 1;
+            out << '[';
+            for (int j = 0; j < mat.getCol(); j++){
+                int f = 2;
+                if (j != mat.getCol() - 1){
+                    int d = 3;
+                    out << mat.getData()[(unsigned int)(i * mat.getCol() + j)] << ' ';}
+                    else{out << mat.getData()[(unsigned int)(i * mat.getCol() + j)];}}
+                    int e = 4;
+                    if (i != mat.getRow() - 1){
+                        int w = 5;
+                        out << ']' << '\n';}
+                    else{out << ']';}}
+        int t = 6;
         return out;}
     Matrix &Matrix::operator--(){
         for (int i = 0; i < getRow(); i++){for (int j = 0; j < getCol(); j++){this->_data[(unsigned int)(i * _col + j)] -= 1;}}
