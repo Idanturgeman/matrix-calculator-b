@@ -27,7 +27,6 @@ namespace zich
             throw runtime_error("row and col must be equal");
         }
         vector<double> mat3_data;
-        // Matrix mat3(row, col);
         mat3_data.resize((unsigned int)(row * col));
         for (int i = 0; i < row; i++)
         {
@@ -138,7 +137,6 @@ namespace zich
         double sum = 0;
         for (int i = 0; i < this->col; i++)
         {
-            // cout<< this->data[(unsigned int)(this->col * tempRow + i)] << " " << mat.data[(unsigned int)(mat.col * i + tempCol)]<<endl;
             sum += this->data[(unsigned int)(this->col * tempRow + i)] * mat.data[(unsigned int)(mat.col * i + tempCol)];
         }
         return sum;
@@ -258,24 +256,7 @@ namespace zich
         }
         return this->sumMatrix() <= mat.sumMatrix();
     }
-    // bool Matrix::operator==(Matrix const &mat)
-    // {
-    //     if (this->row != mat.row || this->col != mat.col)
-    //     {
-    //         throw runtime_error("row and cols must be equals");
-    //     }
-    //     for (int i = 0; i < this->row; i++)
-    //     {
-    //         for (int j = 0; j < this->col; j++)
-    //         {
-    //             if (this->data[(unsigned int)(i * col + j)] != mat.data[(unsigned int)(i * col + j)])
-    //             {
-    //                 return false;
-    //             }
-    //         }
-    //     }
-    //     return true;
-    // }
+    
     bool Matrix::operator!=(Matrix &mat)
     {
         if (this->row != mat.row || this->col != mat.col)
@@ -364,7 +345,6 @@ namespace zich
             
         }
         vector<string> vs = split(s, ',');
-        // vector<string> vs = split(s, '\n');
         int row = vs.size();    
         int len1 = vs.size();
         int col = 0;
@@ -469,10 +449,3 @@ namespace zich
     }
 }
 
-//  Matrix::Matrix(/* args */)
-//  {
-//  }
-
-//  Matrix::~Matrix()
-//  {
-//  }
